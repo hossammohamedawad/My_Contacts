@@ -17,13 +17,27 @@ class ContactChanelCard extends StatelessWidget {
       padding: const EdgeInsets.all(22),
       child: InkWell(
         child: CircleAvatar(
-          backgroundImage: AssetImage('assets/$platform',),
+          backgroundImage: AssetImage(
+            'assets/$platform',
+          ),
           radius: 30,
           backgroundColor: Colors.transparent,
         ),
         onTap: () {
-          launchUrl(url,
-              mode: LaunchMode.externalApplication);
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.deepOrange),
+                ),
+                onPressed: () {
+                  launchUrl(url, mode: LaunchMode.externalApplication);
+                },
+                child: Text('Start $platform'),
+              );
+            },
+          );
         },
       ),
     );
