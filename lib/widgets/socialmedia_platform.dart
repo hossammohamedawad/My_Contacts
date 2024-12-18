@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class socialMediaIcon extends StatelessWidget {
-  String socialMedia;
-  String socialMedialLink;
-  socialMediaIcon({
+class ContactChanelCard extends StatelessWidget {
+  String platform;
+  Uri url;
+  ContactChanelCard({
     Key? key,
-    required this.socialMedia,
-    required this.socialMedialLink,
+    required this.platform,
+    required this.url,
   }) : super(key: key);
 
   @override
@@ -17,12 +17,12 @@ class socialMediaIcon extends StatelessWidget {
       padding: const EdgeInsets.all(22),
       child: InkWell(
         child: CircleAvatar(
-          backgroundImage: AssetImage('assets/$socialMedia'),
+          backgroundImage: AssetImage('assets/$platform',),
           radius: 30,
           backgroundColor: Colors.transparent,
         ),
         onTap: () {
-          launchUrl(Uri.parse(socialMedialLink),
+          launchUrl(url,
               mode: LaunchMode.externalApplication);
         },
       ),
